@@ -1,0 +1,692 @@
+{
+  "dataschema": {
+    "avro": {
+      "name": "italiasicura_cantieri_scuole",
+      "type": "record",
+      "namespace": "daf://default_org/EDUC/italiasicura_cantieri_scuole",
+      "aliases": [
+        "italiasicura_cantieri_scuole"
+      ],
+      "fields": [
+        {
+          "name": "Linea_finanziamento",
+          "type": "string"
+        },
+        {
+          "name": "REGIONE",
+          "type": "string"
+        },
+        {
+          "name": "PROVINCIA",
+          "type": "string"
+        },
+        {
+          "name": "COMUNE",
+          "type": "string"
+        },
+        {
+          "name": "COD_COMUNE",
+          "type": "string"
+        },
+        {
+          "name": "FONTE",
+          "type": "string"
+        },
+        {
+          "name": "Data_aggiornamento_lavori",
+          "type": "string"
+        },
+        {
+          "name": "Data_inizio",
+          "type": "string"
+        },
+        {
+          "name": "Data_fine",
+          "type": "string"
+        },
+        {
+          "name": "ENTE_RICHIEDENTE",
+          "type": "string"
+        },
+        {
+          "name": "TIPOLOGIA_ENTE_RICHIEDENTE",
+          "type": "string"
+        },
+        {
+          "name": "CODICE_EDIFICIO",
+          "type": "string"
+        },
+        {
+          "name": "COD_PRINC",
+          "type": "string"
+        },
+        {
+          "name": "COD_MPI",
+          "type": "string"
+        },
+        {
+          "name": "NOME_SCUOLA",
+          "type": "string"
+        },
+        {
+          "name": "OGGETTO_INTERVENTO",
+          "type": "string"
+        },
+        {
+          "name": "INFO_AGGIUNTIVE",
+          "type": "string"
+        },
+        {
+          "name": "CENTRO_COMUNE",
+          "type": "string"
+        },
+        {
+          "name": "LATITUDINE",
+          "type": "double"
+        },
+        {
+          "name": "LONGITUDINE",
+          "type": "double"
+        },
+        {
+          "name": "TIPO_INTERVENTO",
+          "type": "string"
+        },
+        {
+          "name": "STATO_LAVORI",
+          "type": "string"
+        },
+        {
+          "name": "Codice_progetto",
+          "type": "string"
+        },
+        {
+          "name": "Importo_totale_opera",
+          "type": "string"
+        },
+        {
+          "name": "Finanziamento/Provvedimento",
+          "type": "string"
+        }
+      ]
+    },
+    "flatSchema": [
+      {
+        "name": "Linea_finanziamento",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "REGIONE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "PROVINCIA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "COMUNE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "COD_COMUNE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "FONTE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Data_aggiornamento_lavori",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Data_inizio",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Data_fine",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "ENTE_RICHIEDENTE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "TIPOLOGIA_ENTE_RICHIEDENTE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "CODICE_EDIFICIO",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "COD_PRINC",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "COD_MPI",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "NOME_SCUOLA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "OGGETTO_INTERVENTO",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "INFO_AGGIUNTIVE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "CENTRO_COMUNE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "LATITUDINE",
+        "type": "double",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "LONGITUDINE",
+        "type": "double",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "TIPO_INTERVENTO",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "STATO_LAVORI",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Codice_progetto",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Importo_totale_opera",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Finanziamento/Provvedimento",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      }
+    ],
+    "kyloSchema": "{\"name\":null,\"description\":null,\"charset\":\"UTF-8\",\"properties\":{},\"fields\":[{\"sampleValues\":[\"Quota statale 8 x 1000 IRPEF per l'edilizia scolastica - Legge 147, art. 1 comma 296\",\"Quota statale 8 x 1000 IRPEF per l'edilizia scolastica - Legge 147, art. 1 comma 296\",\"Quota statale 8 x 1000 IRPEF per l'edilizia scolastica - Legge 147, art. 1 comma 296\"],\"name\":\"Linea_finanziamento\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Veneto\",\"Marche\",\"Abruzzo\"],\"name\":\"REGIONE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Vicenza\",\"Ascoli Piceno\",\"Teramo\"],\"name\":\"PROVINCIA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Rosà\",\"Ripatransone\",\"Colledara\"],\"name\":\"COMUNE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"X024087\",\"044063\",\"067018\"],\"name\":\"COD_COMUNE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Amministrazione Comunale\",\"Amministrazione Comunale\",\"Amministrazione Comunale\"],\"name\":\"FONTE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"2017-10-18\",\"2017-09-01\",\"2017-09-01\"],\"name\":\"Data_aggiornamento_lavori\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"2018-06-10\",\"2018-06-10\",\"2018-06-10\"],\"name\":\"Data_inizio\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"2018-12-01\",\"2018-12-31\",\"2018-12-01\"],\"name\":\"Data_fine\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Comune di Rosà\",\"Comune di Ripatrasone\",\"Comune di Colledara\"],\"name\":\"ENTE_RICHIEDENTE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"COMUNE\",\"COMUNE\",\"COMUNE\"],\"name\":\"TIPOLOGIA_ENTE_RICHIEDENTE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"x0240871554\",\"0440630091\",\"0670180093\"],\"name\":\"CODICE_EDIFICIO\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"VIIC85700\",\"APIC804003\",\"TEIC81900X\"],\"name\":\"COD_PRINC\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"VIEE857022\",\"APMM804025\",\"TEEE819045\"],\"name\":\"COD_MPI\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"ROSA` - CAPOLUOGO -\",\"RIPATRANSONE \\\"CONSORTI\\\" MM\",\"\"],\"name\":\"NOME_SCUOLA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"\",\"\",\"\"],\"name\":\"OGGETTO_INTERVENTO\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"\",\"\",\"\"],\"name\":\"INFO_AGGIUNTIVE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"No\",\"No\",\"Si\"],\"name\":\"CENTRO_COMUNE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"45.726653\",\"43.001261\",\"42.539566\"],\"name\":\"LATITUDINE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"double\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":true,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"double\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"11.759728\",\"13.763924\",\"13.675943\"],\"name\":\"LONGITUDINE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"double\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":true,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"double\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Miglioramento sismico ed efficientamento energetico\",\"Adeguamento sismico, adeguamento igienico sanitario\",\"Messa in sicurezza, adeguamento energetico, rimozione amianto\"],\"name\":\"TIPO_INTERVENTO\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"Cantiere aperto\",\"Cantiere aperto\",\"Cantiere aperto\"],\"name\":\"STATO_LAVORI\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"D15I16000630005\",\"G51E15000490002\",\"C86G17000100001\"],\"name\":\"Codice_progetto\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"2250000,0000\",\"800000,0000\",\"428654,0600\"],\"name\":\"Importo_totale_opera\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"},{\"sampleValues\":[\"1221886,0000\",\"723949,0800\",\"428654,0600\"],\"name\":\"Finanziamento/Provvedimento\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"dataTypeWithPrecisionAndScale\":\"string\",\"descriptionWithoutNewLines\":\"\"}],\"schemaName\":null,\"databaseName\":null,\"hiveFormat\":\"ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'\\n WITH SERDEPROPERTIES ( 'separatorChar' = '|' ,'escapeChar' = '\\\\\\\\' ,'quoteChar' = '\\\\\\\"') STORED AS TEXTFILE\",\"structured\":false,\"id\":\"e48499c9-6bc3-4ba1-a148-cb75da36eaf8\"}"
+  },
+  "operational": {
+    "dataset_type": "batch",
+    "read_type": "update",
+    "is_std": false,
+    "logical_uri": "daf://dataset/default_org/EDUC__luoghi/italiasicura_cantieri_scuole",
+    "theme": "EDUC",
+    "subtheme": "luoghi",
+    "group_own": "francescoz",
+    "storage_info": {
+      "hdfs": {
+        "name": "hdfs_daf"
+      }
+    },
+    "physical_uri": "/daf/ordinary/default_org/EDUC__luoghi/default_org_o_italiasicura_cantieri_scuole",
+    "input_src": {
+      "sftp": [
+        {
+          "name": "sftp_daf",
+          "param": "format=csv, sep=undefined"
+        }
+      ]
+    }
+  },
+  "dcatapit": {
+    "name": "italiasicura_cantieri_scuole",
+    "notes": "Dataset pubblicati su http://www.cantieriscuole.it/open_data.aspx",
+    "relationships_as_object": [],
+    "holder_identifier": "default_org",
+    "identifier": "italiasicura_cantieri_scuole",
+    "tags": [
+      {
+        "name": "EDUC",
+        "state": "active",
+        "display_name": "EDUC",
+        "id": "f5feb374-3e24-417a-969e-17f00d7e6458"
+      }
+    ],
+    "groups": [],
+    "modified": "2017-07-23",
+    "alternate_identifier": "italiasicura_cantieri_scuole",
+    "relationships_as_subject": [],
+    "holder_name": "default_org",
+    "publisher_identifier": "default_org",
+    "resources": [],
+    "frequency": "unknown",
+    "title": "italiasicura_cantieri_scuole",
+    "owner_org": "default_org",
+    "theme": "EDUC",
+    "publisher_name": "default_org"
+  }
+}

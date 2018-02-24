@@ -1,0 +1,367 @@
+{
+  "dataschema": {
+    "avro": {
+      "name": "miur_scuolealunni",
+      "type": "record",
+      "namespace": "daf://default_org/EDUC/miur_scuolealunni",
+      "aliases": [
+        "miur_scuolealunni"
+      ],
+      "fields": [
+        {
+          "name": "AREAGEOGRAFICA",
+          "type": "string"
+        },
+        {
+          "name": "CODICEISTITUTORIFERIMENTO",
+          "type": "string"
+        },
+        {
+          "name": "CODICESCUOLA",
+          "type": "string"
+        },
+        {
+          "name": "DENOMINAZIONEISTITUTORIFERIMENTO",
+          "type": "string"
+        },
+        {
+          "name": "DENOMINAZIONESCUOLA",
+          "type": "string"
+        },
+        {
+          "name": "DESCRIZIONECOMUNE",
+          "type": "string"
+        },
+        {
+          "name": "DESCRIZIONETIPOLOGIAGRADOISTRUZIONESCUOLA",
+          "type": "string"
+        },
+        {
+          "name": "INDIRIZZOSCUOLA",
+          "type": "string"
+        },
+        {
+          "name": "PROVINCIA",
+          "type": "string"
+        },
+        {
+          "name": "REGIONE",
+          "type": "string"
+        },
+        {
+          "name": "ALUNNI",
+          "type": "string"
+        },
+        {
+          "name": "Tipo",
+          "type": "string"
+        }
+      ]
+    },
+    "flatSchema": [
+      {
+        "name": "AREAGEOGRAFICA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "CODICEISTITUTORIFERIMENTO",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "CODICESCUOLA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "DENOMINAZIONEISTITUTORIFERIMENTO",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "DENOMINAZIONESCUOLA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "DESCRIZIONECOMUNE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "DESCRIZIONETIPOLOGIAGRADOISTRUZIONESCUOLA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "INDIRIZZOSCUOLA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "PROVINCIA",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "REGIONE",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "ALUNNI",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      },
+      {
+        "name": "Tipo",
+        "type": "string",
+        "metadata": {
+          "semantics": {
+            "id": "",
+            "context": ""
+          },
+          "desc": "",
+          "tag": [],
+          "field_type": "",
+          "constr": [
+            {
+              "type": "",
+              "param": ""
+            }
+          ],
+          "required": 0,
+          "cat": ""
+        }
+      }
+    ],
+    "kyloSchema": "{\"name\":null,\"description\":null,\"charset\":\"UTF-8\",\"properties\":{},\"fields\":[{\"sampleValues\":[\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\",\"NORD EST\"],\"name\":\"AREAGEOGRAFICA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"TNIC803006\",\"TNIC803006\",\"TBIC80900D\",\"TNIC804002\",\"TBIC80900D\",\"TNIC804002\",\"TBIC80900D\",\"TBIC81000N\",\"TBEE030001\"],\"name\":\"CODICEISTITUTORIFERIMENTO\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"TNEE803029\",\"TNEE80303A\",\"TBEE80902L\",\"TNEE804014\",\"TBEE80903N\",\"TNEE804025\",\"TBEE80904P\",\"TBEE81001Q\",\"TBEE030056\"],\"name\":\"CODICESCUOLA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"\\\"VIGOLO VATTARO\\\"\",\"\\\"VIGOLO VATTARO\\\"\",\"SAN CANDIDO - INNICHEN\",\"\\\"FOLGARIA, LAVARONE E LUSERNA\\\"\",\"SAN CANDIDO - INNICHEN\",\"\\\"FOLGARIA, LAVARONE E LUSERNA\\\"\",\"SAN CANDIDO - INNICHEN\",\"MICHAEL PACHER\",\"ORA/AUER\"],\"name\":\"DENOMINAZIONEISTITUTORIFERIMENTO\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"ALTOPIANO VIGOLANA - VATTARO\",\"ALTOPIANO VIGOLANA - CENTA S.N.\",\"VERSCIACO/VIERSCHACH\",\"LAVARONE\",\"PRATO DRAVA/WINNEBACH\",\"FOLGARIA  \\\"SIMONE LAUTON\\\"\",\"SESTO/SEXTEN\",\"MILLAN/MILLAND\",\"ANTERIVO/ALTREI\"],\"name\":\"DENOMINAZIONESCUOLA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"ALTOPIANO DELLA VIGOLANA\",\"ALTOPIANO DELLA VIGOLANA\",\"SAN CANDIDO .INNICHEN.\",\"LAVARONE\",\"SAN CANDIDO .INNICHEN.\",\"FOLGARIA\",\"SESTO .SEXTEN.\",\"BRESSANONE .BRIXEN.\",\"ANTERIVO .ALTREI.\"],\"name\":\"DESCRIZIONECOMUNE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\",\"SCUOLA PRIMARIA\"],\"name\":\"DESCRIZIONETIPOLOGIAGRADOISTRUZIONESCUOLA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"VIA DEI GIARDINI, 1\",\"VIA SAN ROCCO, 4\",\"Non Disponibile\",\"VIA MARCONI\",\"Non Disponibile\",\"VIA S.D'ACQUISTO, 21\",\"Non Disponibile\",\"VIA MARIA-MONTESSORI, 6\",\"Non Disponibile\"],\"name\":\"INDIRIZZOSCUOLA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"TRENTO\",\"TRENTO\",\"BOLZANO\",\"TRENTO\",\"BOLZANO\",\"TRENTO\",\"BOLZANO\",\"BOLZANO\",\"BOLZANO\"],\"name\":\"PROVINCIA\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\",\"TRENTINO-ALTO ADIGE\"],\"name\":\"REGIONE\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"name\":\"ALUNNI\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"},{\"sampleValues\":[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],\"name\":\"Tipo\",\"description\":\"\",\"nativeDataType\":null,\"derivedDataType\":\"string\",\"primaryKey\":false,\"nullable\":true,\"modifiable\":true,\"dataTypeDescriptor\":{\"numeric\":false,\"date\":false,\"complex\":false},\"updatedTracker\":false,\"precisionScale\":null,\"createdTracker\":false,\"tags\":null,\"descriptionWithoutNewLines\":\"\",\"dataTypeWithPrecisionAndScale\":\"string\"}],\"schemaName\":null,\"databaseName\":null,\"hiveFormat\":\"ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'\\n WITH SERDEPROPERTIES ( 'separatorChar' = '|' ,'escapeChar' = '\\\\\\\\' ,'quoteChar' = '\\\\\\\"') STORED AS TEXTFILE\",\"structured\":false,\"id\":\"30e299e9-5c7a-49d4-8b89-e0d4d68016ac\"}"
+  },
+  "operational": {
+    "dataset_type": "batch",
+    "read_type": "update",
+    "is_std": false,
+    "logical_uri": "daf://dataset/default_org/EDUC__istruzione/miur_scuolealunni",
+    "theme": "EDUC",
+    "subtheme": "istruzione",
+    "group_own": "d_mc",
+    "storage_info": {
+      "hdfs": {
+        "name": "hdfs_daf"
+      }
+    },
+    "physical_uri": "/daf/ordinary/default_org/EDUC__istruzione/default_org_o_miur_scuolealunni",
+    "input_src": {
+      "sftp": [
+        {
+          "name": "sftp_daf",
+          "param": "format=csv, sep=undefined"
+        }
+      ]
+    }
+  },
+  "dcatapit": {
+    "name": "miur_scuolealunni",
+    "notes": "anagrafica scuole e alunni",
+    "relationships_as_object": [],
+    "holder_identifier": "default_org",
+    "identifier": "miur_scuolealunni",
+    "tags": [
+      {
+        "name": "EDUC",
+        "state": "active",
+        "display_name": "EDUC",
+        "id": "f5feb374-3e24-417a-969e-17f00d7e6458"
+      }
+    ],
+    "groups": [],
+    "modified": "2017-07-23",
+    "alternate_identifier": "miur_scuolealunni",
+    "relationships_as_subject": [],
+    "holder_name": "default_org",
+    "publisher_identifier": "default_org",
+    "resources": [],
+    "frequency": "unknown",
+    "title": "miur_scuolealunni",
+    "owner_org": "default_org",
+    "theme": "EDUC",
+    "publisher_name": "default_org"
+  }
+}
