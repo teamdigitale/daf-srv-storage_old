@@ -1,6 +1,6 @@
 package it.gov.daf.dataset
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
 import com.google.inject.ImplementedBy
 import it.gov.daf.executioncontexts.WsClientExecutionContext
@@ -8,6 +8,7 @@ import it.gov.daf.utils.ParametersParser
 import models.CatalogClientProtocol.StorageData
 import org.apache.spark.sql.DataFrame
 import com.databricks.spark.avro._
+import org.apache.hadoop.security.UserGroupInformation
 import play.api.libs.json.{JsValue, Json}
 
 import scala.concurrent.Future
@@ -21,6 +22,13 @@ class DatasetServiceImpl @Inject() (
   sparkEndpoint: SparkEndpoint,
   implicit val ec: WsClientExecutionContext
 ) extends DatasetService {
+
+  private def doAsViaProxyUser(user: String) = {
+
+//    val ugi = UserGroupInformation.createProxyUser(user))
+
+    ???
+  }
 
   def dataset(proxyUser: String, storageType: String, storageData: StorageData, limit: Int = 1000): Future[JsValue] = {
     val futureDF = storageType.toLowerCase match {
@@ -37,6 +45,7 @@ class DatasetServiceImpl @Inject() (
               case "avro" => spark.read.avro(storageData.physicalUri).limit(1000)
               case other => spark.emptyDataFrame
             }
+
           }
         } else Future.failed[DataFrame](new IllegalArgumentException(s"invalid format $format"))
 
