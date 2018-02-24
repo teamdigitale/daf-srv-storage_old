@@ -16,6 +16,13 @@ object CatalogClientProtocol {
   implicit val mongoStorageReads = Json.reads[MongoStorage]
   implicit val storageInfoReads = Json.reads[StorageInfo]
 
+  case class StorageInfo(
+    hdfs: Option[HdfsStorage],
+    kudu: Option[KuduStorage],
+    hbase: Option[HBaseStorage],
+    textdb: Option[TextStorage],
+    mongo: Option[MongoStorage]
+  )
 
   case class HdfsStorage(
     name: String,
@@ -47,12 +54,5 @@ object CatalogClientProtocol {
     param: Option[String]
   )
 
-  case class StorageInfo(
-    hdfs: Option[HdfsStorage],
-    kudu: Option[KuduStorage],
-    hbase: Option[HBaseStorage],
-    textdb: Option[TextStorage],
-    mongo: Option[MongoStorage]
-  )
 }
 

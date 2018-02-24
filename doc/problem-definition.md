@@ -30,12 +30,16 @@ Only one SparkContext may be active per JVM. You must stop() the active SparkCon
 This limitation will not be removed as described in [SPARK-2243](https://issues.apache.org/jira/browse/SPARK-2243).
 
 In Spark 2.0 was introduced the new concept of [SparkSession](https://databricks.com/blog/2016/08/15/how-to-use-sparksession-in-apache-spark-2-0.html).
-You can have multiple SparkSessions but still there are all related to the same SparkContext.
+You can have multiple SparkSessions but still there are all related to the same SparkContext. 
+
+> Add section to evaluate how multiple session works in case of user impersonation
 
 #### Context pool
 
 SparkContext is expensive in terms of performance. So, in order to provide instant job execution it is useful to maintain 
-a [pool](https://github.com/twitter/util#object-pool) of SparkContexts.
+a [pool](https://github.com/twitter/util#object-pool) of SparkContexts using multiple JVM,
+ 
+ > or alternatively a create different sessions per request.
 
 ![alt text](./imgs/pool-contexts.jpeg "Contexts Pools")
 
