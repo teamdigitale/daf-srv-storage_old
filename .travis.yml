@@ -15,7 +15,7 @@ scala:
   - 2.11.12
 
 script:
-  - sbt --jvm-opts travis/jvmopts.test test
+  - sbt -jvm-opts travis/jvmopts.test test
 
 before_cache:
   # Tricks to avoid unnecessary cache updates
