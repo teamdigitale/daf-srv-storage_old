@@ -4,3 +4,8 @@ scala:
 script:
   - sbt test
 
+notifications:
+  email:
+    recipients:
+      - fabio@teamdigitale.governo.it
+      - fabiana@teamdigitale.governo.it
