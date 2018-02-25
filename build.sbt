@@ -5,7 +5,7 @@ version := "1.0-SNAPSHOT"
 
 resolvers ++= Seq(
   Resolver.jcenterRepo,
-//  "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/",
+  "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/",
   "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/"
 )
 
