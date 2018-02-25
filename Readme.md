@@ -1,5 +1,7 @@
 # Daf Service Storage
 
+[![Build Status](https://secure.travis-ci.org/teamdigitale/daf-srv-storage.png)](http://travis-ci.org/teamdigitale/daf-srv-storage)
+
 The project exposes an api endpoint to query the dataset stored into the DAF.
 
 
