@@ -5,9 +5,8 @@ version := "1.0-SNAPSHOT"
 
 resolvers ++= Seq(
   "maven" at "https://repo1.maven.org/maven2/",
-  "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/"
-  // ,
-  // "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
+  "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/",
+  "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
 )
 
 lazy val root = (project in file("."))
