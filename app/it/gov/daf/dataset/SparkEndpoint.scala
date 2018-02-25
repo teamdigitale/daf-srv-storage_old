@@ -3,8 +3,8 @@ package it.gov.daf.dataset
 import javax.inject._
 
 import com.google.inject.ImplementedBy
-import com.twitter.util.SimplePool
-import org.apache.spark.sql.SparkSession
+import com.twitter.util.{SimplePool, Timer}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import play.api.Configuration
 import play.api.inject.ApplicationLifecycle
 
@@ -14,6 +14,9 @@ import scala.concurrent.{ExecutionContext, Future}
 @ImplementedBy(classOf[SparkEndpointImpl])
 trait SparkEndpoint {
   def reserveSparkSession(implicit ec: ExecutionContext): Future[SparkSession]
+  def releaseSparkSession(spark: SparkSession): Unit
+  def withSparkSession[T](action: SparkSession => T)
+                         (implicit ec: ExecutionContext): Future[T]
 }
 
 /**
@@ -44,6 +47,20 @@ class SparkEndpointImpl @Inject() (lifecycle: ApplicationLifecycle, configuratio
    */
   def reserveSparkSession(implicit ec: ExecutionContext): Future[SparkSession] = {
     pool.reserve().asScala
+  }
+
+  def releaseSparkSession(spark: SparkSession): Unit = {
+    pool.release(spark)
+  }
+
+  def withSparkSession[T](action: SparkSession => T)
+                      (implicit ec: ExecutionContext): Future[T] = {
+    pool.reserve()
+      .map { spark =>
+        val result = action(spark)
+        pool.release(spark)
+        result
+      }.asScala
   }
 
   lifecycle.addStopHook { () =>

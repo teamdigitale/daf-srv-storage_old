@@ -1,7 +1,7 @@
 package it.gov.daf
 
 import java.net.URLEncoder
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
 import com.google.inject.ImplementedBy
 import it.gov.daf.executioncontexts.WsClientExecutionContext
@@ -16,6 +16,7 @@ trait CatalogClient {
   def getStorageData(authorization: String, catalogId: String): Future[StorageData]
 }
 
+@Singleton
 class CatalogClientImpl @Inject() (
   config: Configuration,
   implicit val ws: WSClient,

@@ -18,7 +18,8 @@ class CatalogClientSpec extends AsyncFlatSpec with Matchers with MockWSHelpers w
   val datasetJson: JsValue = Json.
     parse(this.getClass.getResourceAsStream("/standardization-dataschema.json"))
 
-  val ws = MockWS {
+
+  val ws = mockws.MockWS {
     case (GET, "http://localhost:9001/catalog-manager/v1/catalog-ds/get/test") => Action { Ok(datasetJson) }
   }
 

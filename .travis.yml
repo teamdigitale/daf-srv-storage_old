@@ -1,0 +1,31 @@
+# Use container-based infrastructure
+sudo: false
+
+language: scala
+
+jdk: oraclejdk8
+
+# These directories are cached to S3 at the end of the build
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+
+scala:
+  - 2.11.12
+
+sbt_args: -no-colors -J-Xss2m
+
+script:
+  - sbt -jvm-opts travis/jvmopts.test test
+
+before_cache:
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+notifications:
+  email:
+    recipients:
+      - fabio@teamdigitale.governo.it
+      - fabiana@teamdigitale.governo.it
