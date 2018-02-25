@@ -6,7 +6,6 @@ import it.gov.daf.executioncontexts.WsClientExecutionContextImpl
 import mockws.{MockWS, MockWSHelpers}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest._
-import org.scalatest.mockito.MockitoSugar
 import play.api.Configuration
 import play.api.mvc.Results._
 import play.api.test.Helpers._
@@ -14,10 +13,11 @@ import play.api.libs.json._
 
 import scala.concurrent.ExecutionContext.Implicits._
 
-class CatalogClientSpec extends AsyncFlatSpec with Matchers with MockWSHelpers with BeforeAndAfterAll with MockitoSugar {
+class CatalogClientSpec extends AsyncFlatSpec with Matchers with MockWSHelpers with BeforeAndAfterAll {
 
   val datasetJson: JsValue = Json.
     parse(this.getClass.getResourceAsStream("/standardization-dataschema.json"))
+
 
   val ws = mockws.MockWS {
     case (GET, "http://localhost:9001/catalog-manager/v1/catalog-ds/get/test") => Action { Ok(datasetJson) }
