@@ -9,13 +9,13 @@ jdk: oraclejdk8
 cache:
   directories:
     - $HOME/.ivy2/cache
-    - $HOME/.sbt
+    - $HOME/.sbt/boot
 
 scala:
   - 2.11.12
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION -jvm-opts travis/jvmopts test
+  - sbt ++$TRAVIS_SCALA_VERSION -jvm-opts .jvmopts test
 
 before_cache:
   # Tricks to avoid unnecessary cache updates
