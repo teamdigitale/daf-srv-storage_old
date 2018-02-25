@@ -3,7 +3,7 @@ package it.gov.daf.dataset
 import javax.inject._
 
 import com.google.inject.ImplementedBy
-import com.twitter.util.SimplePool
+import com.twitter.util.{SimplePool, Timer}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import play.api.Configuration
 import play.api.inject.ApplicationLifecycle
@@ -15,8 +15,8 @@ import scala.concurrent.{ExecutionContext, Future}
 trait SparkEndpoint {
   def reserveSparkSession(implicit ec: ExecutionContext): Future[SparkSession]
   def releaseSparkSession(spark: SparkSession): Unit
-  def withSparkSession(action: SparkSession => Array[String])
-                      (implicit ec: ExecutionContext): Future[Array[String]]
+  def withSparkSession[T](action: SparkSession => T)
+                         (implicit ec: ExecutionContext): Future[T]
 }
 
 /**
@@ -53,8 +53,8 @@ class SparkEndpointImpl @Inject() (lifecycle: ApplicationLifecycle, configuratio
     pool.release(spark)
   }
 
-  def withSparkSession(action: SparkSession => Array[String])
-                      (implicit ec: ExecutionContext): Future[Array[String]] = {
+  def withSparkSession[T](action: SparkSession => T)
+                      (implicit ec: ExecutionContext): Future[T] = {
     pool.reserve()
       .map { spark =>
         val result = action(spark)
