@@ -1,8 +1,12 @@
 language: scala
+
+jdk: oraclejdk8
+
 scala:
   - 2.11.12
+  - 2.12.4
 script:
-  - sbt test
+  - sbt ++$TRAVIS_SCALA_VERSION -jvm-opts travis/jvmopts test
 
 notifications:
   email:

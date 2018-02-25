@@ -1,8 +1,9 @@
 package it.gov.daf
 
 import org.scalatest.mockito.MockitoSugar
-import org.scalatest.{AsyncFlatSpec, Matchers}
+import org.scalatest.{AsyncFlatSpec, BeforeAndAfterAll, Matchers}
 
-class DatasetServiceSpec extends AsyncFlatSpec with Matchers with MockitoSugar {
+class DatasetServiceSpec extends AsyncFlatSpec with Matchers with MockitoSugar with BeforeAndAfterAll {
+
 
 }
