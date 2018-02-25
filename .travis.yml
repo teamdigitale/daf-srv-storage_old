@@ -14,8 +14,10 @@ cache:
 scala:
   - 2.11.12
 
+sbt_args: -no-colors -J-Xss2m
+
 script:
-  - sbt test
+  - sbt -jvm-opts travis/jvmopts.test ... test
 
 before_cache:
   # Tricks to avoid unnecessary cache updates
