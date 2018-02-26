@@ -8,9 +8,6 @@ jdk:
 scala:
   - 2.11.12
 
-script:
-   - sbt ++$TRAVIS_SCALA_VERSION -jvm-opts travis/jvmopts test
-
 # These directories are cached to S3 at the end of the build
 cache:
   directories:
