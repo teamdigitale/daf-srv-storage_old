@@ -1,11 +1,11 @@
 name := """daf-service-storage-new"""
 organization := "it.gov.daf"
 
-version := "1.0-SNAPSHOT"
+version := "0.1-SNAPSHOT"
 
 resolvers ++= Seq(
-  "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/",
-  "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
+  "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/"
+  // ,"daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
 )
 
 logLevel := Level.Debug

@@ -18,16 +18,16 @@ script:
   - sbt -jvm-opts travis/jvmopts.test test
 
 
-# before_cache:
-#   - rm -rf $HOME/.ivy2/local
-#   - rm -rf $HOME/.ivy2/cache/com.typesafe.play/*
-#   - rm -rf $HOME/.ivy2/cache/scala_*/sbt_*/com.typesafe.play/*
-#   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print0 | xargs -n10 -0 rm
-#   - find $HOME/.sbt -name "*.lock" -delete
+before_cache:
+  - rm -rf $HOME/.ivy2/local
+  - rm -rf $HOME/.ivy2/cache/com.typesafe.play/*
+  - rm -rf $HOME/.ivy2/cache/scala_*/sbt_*/com.typesafe.play/*
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print0 | xargs -n10 -0 rm
+  - find $HOME/.sbt -name "*.lock" -delete
 
 
-#notifications:
-#  email:
-#    recipients:
-#      - fabio@teamdigitale.governo.it
-#      - fabiana@teamdigitale.governo.it
+notifications:
+ email:
+   recipients:
+     - fabio@teamdigitale.governo.it
+     - fabiana@teamdigitale.governo.it
