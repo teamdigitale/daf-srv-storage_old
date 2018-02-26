@@ -4,10 +4,13 @@ organization := "it.gov.daf"
 version := "1.0-SNAPSHOT"
 
 resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases"),
   "maven" at "https://repo1.maven.org/maven2/",
   "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/",
   "daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
 )
+
+logLevel := Level.Debug
 
 lazy val root = (project in file("."))
   .settings(
