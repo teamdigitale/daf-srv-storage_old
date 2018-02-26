@@ -8,7 +8,7 @@ resolvers ++= Seq(
   // ,"daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
 )
 
-logLevel := Level.Debug
+// logLevel := Level.Debug
 
 lazy val root = (project in file("."))
   .settings(
