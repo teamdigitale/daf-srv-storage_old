@@ -25,7 +25,6 @@ class DatasetController @Inject() (
   implicit val ws: WSClient
 ) extends AbstractController(cc) {
 
-
   /**
    * Given
    * 1. an authenticated request
@@ -75,7 +74,10 @@ class DatasetController @Inject() (
     new ApiResponse(code = 400, message = "Invalid ID supplied"),
     new ApiResponse(code = 404, message = "Dataset not found")
   ))
-  def schema(uri: String) = Action { request =>
+  def schema(
+    @ApiParam(value = "the unique name of the dataset", defaultValue = "") uri: String,
+    @ApiParam(value = "hdfs, kudu", defaultValue = "hdfs") storageType: String
+  ) = Action { request =>
     Ok("it works!")
   }
 

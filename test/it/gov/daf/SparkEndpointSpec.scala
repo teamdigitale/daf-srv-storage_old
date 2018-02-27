@@ -7,6 +7,7 @@ import org.scalatest.{AsyncFlatSpec, BeforeAndAfterAll, FlatSpec, Matchers}
 import play.api.Configuration
 import play.api.inject.DefaultApplicationLifecycle
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.language.postfixOps
 
 import scala.concurrent.duration._
 

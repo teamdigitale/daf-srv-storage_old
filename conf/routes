@@ -4,29 +4,30 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.redirectDocs
-
-GET     /swagger.json               controllers.ApiHelpController.getResources
-GET   /docs/                        controllers.HomeController.redirectDocs
-GET   /docs/*file                   controllers.Assets.at(path="/public/swagger-ui",file)
+GET    /                             controllers.HomeController.redirectDocs
+GET    /swagger.json                 controllers.ApiHelpController.getResources
+GET    /docs/                        controllers.HomeController.redirectDocs
+GET    /docs/*file                   controllers.Assets.at(path="/public/swagger-ui",file)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                               controllers.Assets.versioned(path="/public", file: Asset)
 
 # Must: Do Not Use URI Versioning [115] http://zalando.github.io/restful-api-guidelines/#115
 
-GET     /datasets/:uri                    controllers.DatasetController.dataset(uri: String, storage: String = "hdfs")
+GET     /datasets/:uri                              controllers.DatasetController.dataset(uri: String, storage: String = "hdfs")
 
-GET     /datasets/:uri/schema             controllers.DatasetController.schema(uri: String)
+GET     /datasets/:uri/schema                       controllers.DatasetController.schema(uri: String, storage: String = "hdfs")
 
 # More generally: POST should be used for scenarios that cannot be covered by the other methods sufficiently.
 # For instance, GET with complex (e.g. SQL like structured) query
 # that needs to be passed as request body payload because of the URL-length constraint.
 # In such cases, make sure to document the fact that POST is used as a workaround.
-POST    /datasets/:uri/search           controllers.DatasetController.search(uri: String)
+POST    /datasets/:uri/search                       controllers.DatasetController.search(uri: String)
 
-GET     /datasets/:uri/:storageType           controllers.DatasetController.dataset(uri: String, storageType: String)
+GET     /datasets/:uri/:storageType                 controllers.DatasetController.dataset(uri: String, storageType: String)
+
+GET     /datasets/:uri/:storageType/schema          controllers.DatasetController.schema(uri: String, storageType: String)
 
 
 
