@@ -15,21 +15,21 @@ GET     /assets/*file                               controllers.Assets.versioned
 
 # Must: Do Not Use URI Versioning [115] http://zalando.github.io/restful-api-guidelines/#115
 
-GET     /datasets/:uri                              controllers.DatasetController.dataset(uri: String, storage: String = "hdfs")
+GET     /datasets/:uri                              controllers.DatasetController.dataset(uri: String, storageType: String = "hdfs")
 
-GET     /datasets/:uri/schema                       controllers.DatasetController.schema(uri: String, storage: String = "hdfs")
+GET     /datasets/:uri/schema                       controllers.DatasetController.schema(uri: String, storageType: String = "hdfs")
 
 # More generally: POST should be used for scenarios that cannot be covered by the other methods sufficiently.
 # For instance, GET with complex (e.g. SQL like structured) query
 # that needs to be passed as request body payload because of the URL-length constraint.
 # In such cases, make sure to document the fact that POST is used as a workaround.
-POST    /datasets/:uri/search                       controllers.DatasetController.search(uri: String)
+POST    /datasets/:uri/search                       controllers.DatasetController.search(uri: String, storageType: String = "hdfs")
 
 GET     /datasets/:uri/:storageType                 controllers.DatasetController.dataset(uri: String, storageType: String)
 
 GET     /datasets/:uri/:storageType/schema          controllers.DatasetController.schema(uri: String, storageType: String)
 
-
+POST    /datasets/:uri/:storageType/search          controllers.DatasetController.search(uri: String, storageType: String)
 
 
 
