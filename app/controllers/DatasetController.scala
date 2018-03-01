@@ -6,6 +6,7 @@ import io.swagger.annotations._
 import it.gov.daf.executioncontexts.WsClientExecutionContext
 import it.gov.daf.CatalogClient
 import it.gov.daf.dataset.DatasetService
+import models._
 import models.CatalogClientProtocol.StorageData
 import models.Protocol._
 import play.api.Configuration
@@ -24,7 +25,6 @@ class DatasetController @Inject() (
   implicit val ec: WsClientExecutionContext,
   implicit val ws: WSClient
 ) extends AbstractController(cc) {
-
 
   /**
    * Given
@@ -55,8 +55,13 @@ class DatasetController @Inject() (
   ) = Action.async { request =>
     request.headers.get("Authorization") match {
       case Some(auth) =>
+        val user = extractUsername(auth)
         catalogClient.getStorageData(auth, uri)
-          .flatMap(storageData => doExtractDataset(storageData, extractUsername(auth), storageType))
+          .flatMap { sd =>
+            datasetService
+              .dataset(user, storageType, sd)
+              .mapToDatasetResult(user, storageType, sd)
+          }
           .map(r => Ok(Json.toJson(r)))
 
       case None =>
@@ -75,8 +80,23 @@ class DatasetController @Inject() (
     new ApiResponse(code = 400, message = "Invalid ID supplied"),
     new ApiResponse(code = 404, message = "Dataset not found")
   ))
-  def schema(uri: String) = Action { request =>
-    Ok("it works!")
+  def schema(
+    @ApiParam(value = "the unique name of the dataset", defaultValue = "") uri: String,
+    @ApiParam(value = "hdfs, kudu", defaultValue = "hdfs") storageType: String
+  ) = Action.async { request =>
+    request.headers.get("Authorization") match {
+      case Some(auth) =>
+        val user = extractUsername(auth)
+        catalogClient.getStorageData(auth, uri)
+          .flatMap { sd =>
+            datasetService.schema(user, storageType, sd)
+              .mapToDatasetResult(user, storageType, sd)
+          }
+          .map(r => Ok(Json.toJson(r)(datasetResultWrites)))
+
+      case None =>
+        Future.successful(BadRequest("Invalid Authorization"))
+    }
   }
 
   @ApiOperation(
@@ -86,23 +106,53 @@ class DatasetController @Inject() (
     authorizations = Array(new Authorization(value = "basicAuth")),
     protocols = "https, http"
   )
+  @ApiImplicitParams(Array(
+    new ApiImplicitParam(
+      name = "query",
+      value = "A valid query",
+      required = true,
+      dataType = "models.Query",
+      paramType = "body"
+    )
+  ))
   @ApiResponses(Array(
     new ApiResponse(code = 400, message = "Invalid ID supplied"),
     new ApiResponse(code = 404, message = "Dataset not found")
   ))
-  def search(uri: String) = Action { request =>
-    Ok("it works!")
+  def search(
+    @ApiParam(value = "the unique name of the dataset", defaultValue = "") uri: String,
+    @ApiParam(value = "hdfs, kudu", defaultValue = "hdfs") storageType: String
+  ) = Action.async { request =>
+    request.headers.get("Authorization") match {
+      case Some(auth) =>
+        val user = extractUsername(auth)
+        request.body.asJson.map(_.as[Query]) match {
+          case Some(query) =>
+            catalogClient.getStorageData(auth, uri)
+              .flatMap{ sd =>
+                datasetService.search(user, storageType, sd, query)
+                    .mapToDatasetResult(user, storageType, sd)
+              }
+              .map(r => Ok(Json.toJson(r)))
+
+          case None =>
+            Future.successful(BadRequest("Missing Query Body"))
+        }
+
+      case None =>
+        Future.successful(BadRequest("Invalid Authorization"))
+    }
   }
 
   private def extractUsername(s: String): String = ???
 
-  private def doExtractDataset(storageData: StorageData, username: String, storageType: String): Future[DatasetResult] = {
-    datasetService.dataset(username, storageType, storageData)
-      .map { data =>
+  private implicit class JsValueWrapper(fValue: Future[JsValue]) {
+    def mapToDatasetResult(user: String, storageType: String, storageData: StorageData): Future[DatasetResult] = {
+      fValue.map { data =>
         DatasetResult(
           uri = storageData.physicalUri,
           storageType = storageType,
-          user = username,
+          user = user,
           data = Some(data)
         )
       }.recover {
@@ -110,9 +160,10 @@ class DatasetController @Inject() (
           DatasetResult(
             uri = storageData.physicalUri,
             storageType = storageType,
-            user = username,
+            user = user,
             error = Some(Json.parse(ex.getMessage))
           )
       }
+    }
   }
 }

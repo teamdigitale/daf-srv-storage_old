@@ -3,6 +3,11 @@ organization := "it.gov.daf"
 
 version := "0.1-SNAPSHOT"
 
+scalacOptions ++= Seq(
+  "-encoding", "UTF-8",
+  "-feature"
+)
+
 resolvers ++= Seq(
   "cloudera" at "http://repository.cloudera.com/artifactory/cloudera-repos/"
   // ,"daf" at "http://nexus.daf.teamdigitale.it/repository/maven-public/"
