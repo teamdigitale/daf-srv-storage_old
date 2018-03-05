@@ -3,6 +3,8 @@ package it.gov.daf
 import models._
 import org.apache.spark.sql.DataFrame
 
+import scala.util.Try
+
 package object dataset {
   import com.twitter.util.{Future => TwitterFuture, Promise => TwitterPromise, Return, Throw}
   import scala.concurrent.{Future => ScalaFuture, Promise => ScalaPromise, ExecutionContext}
@@ -32,7 +34,7 @@ package object dataset {
     }
   }
 
-  implicit class DafDataFrameWrapper(df: DataFrame) {
+  implicit class DafDataFrameWrapper(tDf: Try[DataFrame]) {
 
     val supportedFunctions = Set("count", "max", "mean", "min", "sum")
 
@@ -41,18 +43,25 @@ package object dataset {
      * @param columns
      * @return a dataframe with projection for the selected columns
      */
-    def select(columns: Option[List[String]]): DataFrame = {
+    def select(columns: Option[List[String]]): Try[DataFrame] = {
       columns match {
-        case Some(list) if list.isEmpty => df
+        case Some(list) if list.isEmpty => tDf
 
-        case Some(list) if list.contains("*") => df
+        case Some(list) if list.contains("*") => tDf
 
         case Some(list) =>
-          val selection = list.toSet.intersect(df.columns.toSet).toArray
-          if (selection.isEmpty) df
-          else df.select(selection.head, selection.tail: _*)
+          tDf.flatMap{ df =>
+            val selection = list.toSet.intersect(df.columns.toSet).toArray
+            if (selection.isEmpty)
+              Failure(
+                new IllegalArgumentException(
+                  s"columns ${list.mkString("["," , ","]")} not in ${df.columns.toSeq.mkString("["," , ","]")}"
+                )
+              )
+            else Success(df.select(selection.head, selection.tail: _*))
+          }
 
-        case None => df
+        case None => tDf
       }
     }
 
@@ -61,20 +70,23 @@ package object dataset {
       * @param optGroupBy
       * @return a dataframe goruped only for valid columns and aggregation functions
       */
-    def groupBy(optGroupBy: Option[GroupBy]): DataFrame = {
+    def groupBy(optGroupBy: Option[GroupBy]): Try[DataFrame] = {
       optGroupBy match {
         case Some(groupBy) =>
-          val columns = df.columns.toSet
-          val conditions = groupBy
-            .conditions
-            .filter(c => supportedFunctions.contains(c.aggregationFunction))
-            .filter(c => columns.contains(c.column))
-            .map(c => c.column -> c.aggregationFunction)
-            .toMap
+          tDf.map {df =>
+            val columns = df.columns.toSet
+            val conditions = groupBy
+              .conditions
+              .filter(c => supportedFunctions.contains(c.aggregationFunction))
+              .filter(c => columns.contains(c.column))
+              .map(c => c.column -> c.aggregationFunction)
+              .toMap
 
-          if (conditions.isEmpty) df
-          else df.groupBy(groupBy.groupColumn).agg(conditions)
-        case None => df
+            if (conditions.isEmpty) df
+            else df.groupBy(groupBy.groupColumn).agg(conditions)
+          }
+
+        case None => tDf
       }
     }
 
@@ -83,10 +95,16 @@ package object dataset {
       * @param conditions
       * @return
       */
-    def where(conditions: Option[List[String]]): DataFrame =
+    def where(conditions: Option[List[String]]): Try[DataFrame] =
       conditions match {
-        case Some(cs) => cs.foldLeft(df)((d, c) =>  d.where(c))
-        case None => df
+        case Some(cs) =>
+          tDf.map(df => cs.foldLeft(df)((d, c) =>  d.where(c)))
+
+        case None => tDf
       }
+
+    def limit(n: Int): Try[DataFrame] = {
+      tDf.map(_.limit(n))
+    }
   }
 }

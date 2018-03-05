@@ -23,6 +23,8 @@ lazy val root = (project in file("."))
     PlayScala
   )
 
+val hadoopVersion = "2.6.0-cdh5.12.0"
+
 
 libraryDependencies ++= Seq(
   guice,
@@ -40,6 +42,7 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
   "de.leanovate.play-mockws" %% "play-mockws" % "2.6.2" % Test,
   "org.mockito" % "mockito-core" % "2.10.0" % Test
+
 )
 
 libraryDependencies ~= { _.map(_.exclude("org.slf4j", "slf4j-log4j12")) }

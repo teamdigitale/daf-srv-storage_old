@@ -60,7 +60,6 @@ class DatasetController @Inject() (
           .flatMap { sd =>
             datasetService
               .dataset(user, storageType, sd)
-              .mapToDatasetResult(user, storageType, sd)
           }
           .map(r => Ok(Json.toJson(r)))
 
@@ -90,7 +89,6 @@ class DatasetController @Inject() (
         catalogClient.getStorageData(auth, uri)
           .flatMap { sd =>
             datasetService.schema(user, storageType, sd)
-              .mapToDatasetResult(user, storageType, sd)
           }
           .map(r => Ok(Json.toJson(r)(datasetResultWrites)))
 
@@ -129,9 +127,8 @@ class DatasetController @Inject() (
         request.body.asJson.map(_.as[Query]) match {
           case Some(query) =>
             catalogClient.getStorageData(auth, uri)
-              .flatMap{ sd =>
+              .flatMap { sd =>
                 datasetService.search(user, storageType, sd, query)
-                    .mapToDatasetResult(user, storageType, sd)
               }
               .map(r => Ok(Json.toJson(r)))
 
@@ -145,25 +142,4 @@ class DatasetController @Inject() (
   }
 
   private def extractUsername(s: String): String = ???
-
-  private implicit class JsValueWrapper(fValue: Future[JsValue]) {
-    def mapToDatasetResult(user: String, storageType: String, storageData: StorageData): Future[DatasetResult] = {
-      fValue.map { data =>
-        DatasetResult(
-          uri = storageData.physicalUri,
-          storageType = storageType,
-          user = user,
-          data = Some(data)
-        )
-      }.recover {
-        case ex: Throwable =>
-          DatasetResult(
-            uri = storageData.physicalUri,
-            storageType = storageType,
-            user = user,
-            error = Some(Json.parse(ex.getMessage))
-          )
-      }
-    }
-  }
 }
