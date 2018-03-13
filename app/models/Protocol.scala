@@ -19,6 +19,6 @@ object Protocol {
     storageType: String,
     user: String,
     data: Option[JsValue] = None,
-    error: Option[JsValue] = None
+    error: Option[String] = None
   )
 }
