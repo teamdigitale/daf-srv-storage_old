@@ -225,8 +225,6 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
     )
 
     whenReady(fResult){ dsResult =>
-//      import models.Protocol.datasetResultWrites
-//      println(Json.prettyPrint(Json.toJson(dsResult)))
       dsResult.error should be ('defined)
     }
   }

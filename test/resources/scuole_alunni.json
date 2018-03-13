@@ -65,7 +65,9 @@
         "metadata": {
           "semantics": {
             "id": "",
-            "context": ""
+            "context": "",
+            "uri_vocabulary": "",
+            "uri_property": ""
           },
           "desc": "",
           "tag": [],

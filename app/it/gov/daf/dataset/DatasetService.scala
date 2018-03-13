@@ -29,12 +29,6 @@ class DatasetServiceImpl @Inject() (
   implicit val ec: WsClientExecutionContext
 ) extends DatasetService {
 
-  def doAsProxyUser[T](user: String)(action: => Try[T]): Try[T] = {
-    val proxyUser = UserGroupInformation.createProxyUser(user, UserGroupInformation.getCurrentUser)
-    proxyUser.doAs(new PrivilegedExceptionAction[Try[T]] {
-      override def run(): Try[T] = action
-    })
-  }
 
   def dataset(
     user: String,
@@ -109,7 +103,22 @@ class DatasetServiceImpl @Inject() (
   }
 
   /**
+    *
+    * @param user
+    * @param action
+    * @tparam T
+    * @return
+    */
+  private def doAsProxyUser[T](user: String, action: => Try[T]): Try[T] = {
+    val proxyUser = UserGroupInformation.createProxyUser(user, UserGroupInformation.getCurrentUser)
+    proxyUser.doAs(new PrivilegedExceptionAction[Try[T]] {
+      override def run(): Try[T] = action
+    })
+  }
+
+  /**
    * This methods handle the extraction of the data type and return the format and a valid spark session for your query
+    * The Spark Session is retrieved from an Object Pool stored into the SparkEndpoint
    * @param user
    * @param storageType
    * @param storageData
@@ -127,10 +136,10 @@ class DatasetServiceImpl @Inject() (
         val params = ParametersParser.asMap(storageData.storageInfo.hdfs.flatMap(_.param))
         val format = params.getOrElse("format", "parquet")
 
-        if (!Formats.contains(format)) Future.failed(new IllegalArgumentException(s"invalid format $format"))
-        else sparkEndpoint.withSparkSession { spark =>
-          doAsProxyUser(user)(op(format, spark))
-        }
+        if (!Formats.contains(format))
+          Future.failed(new IllegalArgumentException(s"invalid format $format"))
+        else
+          sparkEndpoint.withSparkSession(spark => doAsProxyUser(user, op(format, spark)))
 
       case other =>
         Future.failed(new IllegalArgumentException(s"$other not supported yet"))
