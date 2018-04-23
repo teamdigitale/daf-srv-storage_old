@@ -40,7 +40,7 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
   )
 
   val csvStorageData = genHDFSStorageData(
-    path = this.getClass.getResource("/csv/userdata1.csv").toExternalForm,
+    path = this.getClass.getResource("/csv/userdata1").toExternalForm,
     format = "csv"
   )
 
