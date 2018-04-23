@@ -4,8 +4,8 @@ import akka.actor.ActorSystem
 import com.typesafe.config.ConfigFactory
 import it.gov.daf.dataset.{DatasetServiceImpl, SparkEndpointImpl}
 import it.gov.daf.executioncontexts.WsClientExecutionContextImpl
-import models.CatalogClientProtocol.{HdfsStorage, StorageData, StorageInfo}
-import models.Query
+import models.CatalogClientProtocol.{HdfsStorage, StorageDataInfo, StorageInfo}
+import models.{Query, WhereCondition}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers, OptionValues}
 import org.scalatest.concurrent.ScalaFutures
 import play.api.Configuration
@@ -29,18 +29,29 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
 
   val dsService = new DatasetServiceImpl(endpoint, ec)
 
+  val parquetStorageData = genHDFSStorageData(
+    path = this.getClass.getResource("/parquet/userdata1.parquet").toExternalForm,
+    format = "parquet"
+  )
+
+  val avroStorageData = genHDFSStorageData(
+    path = this.getClass.getResource("/avro/userdata1.avro").toExternalForm,
+    format = "avro"
+  )
+
+  val csvStorageData = genHDFSStorageData(
+    path = this.getClass.getResource("/csv/userdata1.csv").toExternalForm,
+    format = "csv"
+  )
+
   "A DatasetService" should "query a parquet dataset stored into hdfs" in {
 
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/parquet/userdata1.parquet").toExternalForm,
-      format = "parquet"
-    )
     val limit = 100
 
     val fResult = dsService.dataset(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData,
+      storageInfo = parquetStorageData,
       limit = limit
     )
 
@@ -56,16 +67,12 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
   }
 
   it should "query a avro dataset stored into hdfs" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/avro/userdata1.avro").toExternalForm,
-      format = "avro"
-    )
     val limit = 100
 
     val fResult = dsService.dataset(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData,
+      storageInfo = avroStorageData,
       limit = limit
     )
 
@@ -82,16 +89,12 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
 
 
   it should "query a csv dataset stored into hdfs" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/csv/userdata1.csv").toExternalForm,
-      format = "csv"
-    )
     val limit = 100
 
     val fResult = dsService.dataset(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData,
+      storageInfo = csvStorageData,
       limit = limit
     )
 
@@ -108,15 +111,11 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
 
 
   it should "return the schema for a parquet dataset" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/parquet/userdata1.parquet").toExternalForm,
-      format = "parquet"
-    )
 
     val fResult = dsService.schema(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData
+      storageInfo = parquetStorageData
     )
 
     whenReady(fResult){ dsResult =>
@@ -131,15 +130,10 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
   }
 
   it should "return the schema for a avro dataset" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/avro/userdata1.avro").toExternalForm,
-      format = "avro"
-    )
-
     val fResult = dsService.schema(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData
+      storageInfo = avroStorageData
     )
 
     whenReady(fResult){ dsResult =>
@@ -154,15 +148,10 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
   }
 
   it should "return the schema for a csv dataset" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/csv/userdata1.csv").toExternalForm,
-      format = "csv"
-    )
-
     val fResult = dsService.schema(
       user ="test",
       storageType = "hdfs",
-      storageData = storageData
+      storageInfo = csvStorageData
     )
 
     whenReady(fResult){ dsResult =>
@@ -176,17 +165,13 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
     }
   }
 
-  it should "select columns from a dataset in parquet" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/parquet/userdata1.parquet").toExternalForm,
-      format = "parquet"
-    )
+  it should "SELECT columns from a dataset in parquet" in {
     val limit = 100
 
     val fResult = dsService.search(
       user = "test",
       storageType = "hdfs",
-      storageData = storageData,
+      storageInfo = parquetStorageData,
       query = Query(
         select = Some(List("first_name", "last_name")),
         where = None,
@@ -206,16 +191,12 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
     }
   }
 
-  it should "return an error when selecting wrong column names" in {
-    val storageData = genHDFSStorageData(
-      path = this.getClass.getResource("/parquet/userdata1.parquet").toExternalForm,
-      format = "parquet"
-    )
+  it should "return an error when SELECTING wrong column names" in {
     val limit = 100
     val fResult = dsService.search(
       user = "test",
       storageType = "hdfs",
-      storageData = storageData,
+      storageInfo = parquetStorageData,
       query = Query(
         select = Some(List("first_name2", "last_name2")),
         where = None,
@@ -229,8 +210,98 @@ class DatasetServiceSpec extends FlatSpec with Matchers with BeforeAndAfterAll w
     }
   }
 
+  it should "perform WHERE on string value" in {
+    val limit = 100
+
+    val fResult = dsService.search(
+      user = "test",
+      storageType = "hdfs",
+      storageInfo = parquetStorageData,
+      query = Query(
+        select = None,
+        where = Some(List(WhereCondition(
+          property = "first_name",
+          symbol = "==",
+          value = "Amanda"
+        ))),
+        groupBy = None,
+        limit = limit
+      )
+    )
+
+    whenReady(fResult) { dsResult =>
+      dsResult.data.get match {
+        case JsArray(array) =>
+          array should have size 7
+
+        case other =>
+          fail(s"wrong result $other")
+      }
+    }
+  }
+
+    it should "perform WHERE on double value" in {
+      val limit = 100
+
+      val fResult = dsService.search(
+        user = "test",
+        storageType = "hdfs",
+        storageInfo = parquetStorageData,
+        query = Query(
+          select = None,
+          where = Some(List(WhereCondition(
+            property = "salary",
+            symbol = ">",
+            value = "280000"
+          ))),
+          groupBy = None,
+          limit = limit
+        )
+      )
+
+      whenReady(fResult){ dsResult =>
+        dsResult.data.get match {
+          case JsArray(array) =>
+            array should have size 18
+
+          case other =>
+            fail(s"wrong result $other")
+        }
+      }
+  }
+
+  it should "perform WHERE on date value" in {
+    val limit = 100
+
+    val fResult = dsService.search(
+      user = "test",
+      storageType = "hdfs",
+      storageInfo = parquetStorageData,
+      query = Query(
+        select = None,
+        where = Some(List(WhereCondition(
+          property = "birthdate",
+          symbol = "==",
+          value = "3/8/1971"
+        ))),
+        groupBy = None,
+        limit = limit
+      )
+    )
+
+    whenReady(fResult){ dsResult =>
+      dsResult.data.get match {
+        case JsArray(array) =>
+          array should have size 1
+
+        case other =>
+          fail(s"wrong result $other")
+      }
+    }
+  }
+
   def genHDFSStorageData(path: String, format: String) = {
-    StorageData(
+    StorageDataInfo(
       physicalUri = path,
       storageInfo = StorageInfo(
         hdfs = Some(HdfsStorage(

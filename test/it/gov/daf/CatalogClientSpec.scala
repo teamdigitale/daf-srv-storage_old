@@ -30,7 +30,7 @@ class CatalogClientSpec extends AsyncFlatSpec with Matchers with MockWSHelpers w
   "CatalogClient" should "get the storage data" in {
 
     val client = new CatalogClientImpl(Configuration(config), ws, ec)
-    val fResult = client.getStorageData("some authorization", "test")
+    val fResult = client.getStorageDataInfo("some authorization", "test")
 
     fResult.map { result =>
       assert(result.physicalUri.nonEmpty)

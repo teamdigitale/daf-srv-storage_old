@@ -34,8 +34,7 @@ package object dataset {
     }
   }
 
-  implicit class DafDataFrameWrapper(tDf: Try[DataFrame]) {
-
+  implicit class DafDataFrameWrapper(dataframe: DataFrame) {
     val supportedFunctions = Set("count", "max", "mean", "min", "sum")
 
     /**
@@ -43,68 +42,41 @@ package object dataset {
      * @param columns
      * @return a dataframe with projection for the selected columns
      */
-    def select(columns: Option[List[String]]): Try[DataFrame] = {
-      columns match {
-        case Some(list) if list.isEmpty => tDf
-
-        case Some(list) if list.contains("*") => tDf
-
-        case Some(list) =>
-          tDf.flatMap{ df =>
-            val selection = list.toSet.intersect(df.columns.toSet).toArray
-            if (selection.isEmpty)
-              Failure(
-                new IllegalArgumentException(
-                  s"columns ${list.mkString("["," , ","]")} not in ${df.columns.toSeq.mkString("["," , ","]")}"
-                )
-              )
-            else Success(df.select(selection.head, selection.tail: _*))
-          }
-
-        case None => tDf
-      }
+    def select(columns: Option[List[String]]): DataFrame = columns match {
+      case None => dataframe
+      // handle case when no columns all * is selected
+      case Some(list) if list.isEmpty => dataframe
+      case Some(list) if list.contains("*") => dataframe
+      case Some(list) => dataframe.select(list.head, list.tail: _*)
     }
 
     /**
-      *
-      * @param optGroupBy
-      * @return a dataframe goruped only for valid columns and aggregation functions
-      */
-    def groupBy(optGroupBy: Option[GroupBy]): Try[DataFrame] = {
+     *
+     * @param optGroupBy
+     * @return a dataframe goruped only for valid columns and aggregation functions
+     */
+    def groupBy(optGroupBy: Option[GroupBy]): DataFrame = {
       optGroupBy match {
         case Some(groupBy) =>
-          tDf.map {df =>
-            val columns = df.columns.toSet
-            val conditions = groupBy
-              .conditions
-              .filter(c => supportedFunctions.contains(c.aggregationFunction))
-              .filter(c => columns.contains(c.column))
-              .map(c => c.column -> c.aggregationFunction)
-              .toMap
 
-            if (conditions.isEmpty) df
-            else df.groupBy(groupBy.groupColumn).agg(conditions)
-          }
+          val columns = dataframe.columns.toSet
+          val conditions = groupBy
+            .conditions
+            .filter(c => supportedFunctions.contains(c.aggregationFunction))
+            .filter(c => columns.contains(c.column))
+            .map(c => c.column -> c.aggregationFunction)
+            .toMap
 
-        case None => tDf
+          if (conditions.isEmpty) dataframe
+          else dataframe.groupBy(groupBy.groupColumn).agg(conditions)
+
+        case None => dataframe
       }
     }
 
-    /**
-      *
-      * @param conditions
-      * @return
-      */
-    def where(conditions: Option[List[String]]): Try[DataFrame] =
-      conditions match {
-        case Some(cs) =>
-          tDf.map(df => cs.foldLeft(df)((d, c) =>  d.where(c)))
-
-        case None => tDf
-      }
-
-    def limit(n: Int): Try[DataFrame] = {
-      tDf.map(_.limit(n))
+    def where(conditions: Option[List[WhereCondition]]): DataFrame = {
+      conditions.getOrElse(List.empty)
+          .foldLeft(dataframe)((df, cond) => df.where(cond.toSql()))
     }
   }
 }
