@@ -1,0 +1,15 @@
+#
+# A docker image for development. Run with
+# 
+# $ docker-compose up -d dev
+#
+# then enter the container
+#
+# $ docker exec -ti dafsrvstorage_dev_1 /bin/bash
+# 
+dev:
+  image: hseeberger/scala-sbt
+  volumes:
+  - .:/code
+  command: tail -f /etc/hosts
+
