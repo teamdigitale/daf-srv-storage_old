@@ -6,7 +6,7 @@ The project exposes an api endpoint to query the dataset stored into the DAF.
 
 
 The endpoint exposes an [openapi 3 endpoint](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md).
-The project is build using [play framework 2.6.11](https://www.playframework.com/documentation/2.6.x/ScalaHome) and the openapi api are generated using [swagger-play](https://github.com/swagger-api/swagger-play).
+The project is build using [play framework 2.6.13](https://www.playframework.com/documentation/2.6.x/ScalaHome) and the openapi api are generated using [swagger-play](https://github.com/swagger-api/swagger-play).
 
 
 ## Run

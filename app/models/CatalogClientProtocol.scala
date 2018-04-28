@@ -4,7 +4,12 @@ import play.api.libs.json._
 
 object CatalogClientProtocol {
 
-  case class StorageData(
+  /**
+    *
+    * @param physicalUri the uri of the dataset into hdfs
+    * @param storageInfo
+    */
+  case class StorageDataInfo(
     physicalUri: String,
     storageInfo: StorageInfo
   )
